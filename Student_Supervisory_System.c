@@ -10,6 +10,7 @@
 float average_grade=0;
 int all_grade=0;
 int pt=0;
+int profile_ammount=0;
 struct student
 {
     char stu_id[max_len];
@@ -19,11 +20,16 @@ struct student
     float sum;
     float aver;
 }stu[max_ammount];
+struct profile
+{
+    char account[max_len];
+    char password[max_len];
+};
 void Show_Function()
 {
     printf("Function Number :\n");
     puts(" |--------------------------");
-    printf(" |- 1.Show all data\n |-- 2.Delete data\n |--- 3.Input data\n |---- 4.Search student\n |----- 5.Rankings\n |------ 6.Modify data\n |------- 7.Outstanding Students\n |-------- 8.Flunk Students\n |--------- 9.Exit\n");
+    printf(" |- 1.Show all data\n |-- 2.Delete data\n |--- 3.Add data\n |---- 4.Search student\n |----- 5.Rankings\n |------ 6.Edit data\n |------- 7.Outstanding Students\n |-------- 8.Flunk Students\n |--------- 9.Exit\n");
     puts(" |--------------------------");
     printf("Choose Your Function (By order number) : ");
 };
@@ -231,7 +237,7 @@ void Show_Rankings()
         puts(">----------------------------------<");
         printf("%dth -- %s :\nAverage : %.2f, Sum : %.2f\n",i+1,temp_stu[i].name,temp_stu[i].aver,temp_stu[i].sum);
         if(i==pt_outstand-1)
-            puts(">----------------------------------<");
+            puts("\n>----------------------------------<");
         printf("\n");
     }
     return;
@@ -241,7 +247,17 @@ void Modify_Data()
     Traverse_Data();
     printf("Please input which data you want to edit : ");
     int data_num;
-    scanf("%d",&data_num);
+    while(1)
+    {
+        scanf("%d",&data_num);
+        if(data_num-1<0||data_num>pt)
+        {
+            printf("Invalid Data Number !\n");
+            printf("Please input which data you want to edit : ");
+        }
+        else
+            break;
+    }
     system("cls");
     Print_Data(data_num-1,1);
     printf("Which part do you want to edit ?\n");
@@ -315,13 +331,37 @@ void Save_All()
     fclose(fp_save);
     return;
 };
-void profile_system();
+void profile_system_v1();
+//void profile_system()
+//{
+//    FILE *ptf;
+//    ptf=fopen("Profile_data.dtb","r");
+//    struct profile pro[max_ammount];
+//    while(fscanf(ptf,"%s",pro[profile_ammount].account)!=EOF)
+//        fscanf(ptf,"%s",pro[profile_ammount++].password);
+//    int choice;
+//    printf(" |--- Welcome To The System ---| \n");
+//    pritnf(" |--- (1)-Login (2)-Register (0)-Exit ---| \n");
+//    pritnf(" |--- Your Selection : ");
+//    scanf("%d",&choice);
+//    if(choice==1)login{
+//        char input_account[max_len];
+//    }
+//    else if(choice==2){
+//    }
+//    else if(choice==0){
+//    }
+//    else{
+//        fclose(ptf);
+//        return;
+//    }
+//};
 void profile_system_Beta()
 {
     while(1)
     {
         int i,j;
-        char pass[max_len]="666";
+        char pass[max_len]="2018";
         char input[max_len];
         printf(" |--- Login The System ---| \n");printf(" |--> Please Enter The Password : ");
         for(i=0;i<max_len;i++)
@@ -454,7 +494,7 @@ int main()
     {
         fgetc(fp);
         fgets(stu[pt].name, max_len, (FILE*)fp);
-        int pt_modi=strlen(stu[pt].name)-1;
+        int pt_modi=(int)strlen(stu[pt].name)-1;
         stu[pt].name[pt_modi]='\0';
         fscanf(fp,"%d",&stu[pt].sex);
         fscanf(fp,"%f %f %f %f %f",&stu[pt].math,&stu[pt].eng,&stu[pt].chinese,&stu[pt].phy,&stu[pt].chemic);
@@ -513,7 +553,7 @@ int main()
         /*--------end of function code--------*/
         while(1)
         {
-            printf("Do you want to further manipulate the data? (1/Yes,2/No) : ");
+            printf("Back to the Menu or Quit ? ( 1/Menu , 2/Quit ) : ");
             scanf("%d",&choose);
             system("cls");
             if(choose==1)
