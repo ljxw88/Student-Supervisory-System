@@ -4,8 +4,9 @@
 #include <string.h>
 #include <time.h>
 #include <conio.h>
-#define max_len 100
-#define max_ammount 1000
+#define max_len 50
+#define max_ammount 1024000
+#pragma comment(linker,"/STACK:1024000000,1024000000")
 //#define max_temp 1000
 float average_grade=0;
 int all_grade=0;
@@ -484,10 +485,10 @@ int main()
     //printf("Immediate Time : ");system("TIME /T");
     FILE *fp;
     /*password code start*/
-    
+
     profile_system_Beta();
     //profile_system();
-    
+
     /*password code end*/
     fp=fopen("Information.dtb", "rb");
     while(fscanf(fp,"%s",stu[pt].stu_id)!=EOF)
