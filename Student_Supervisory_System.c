@@ -332,31 +332,6 @@ void Save_All()
     fclose(fp_save);
     return;
 };
-void profile_system_v1();
-//void profile_system()
-//{
-//    FILE *ptf;
-//    ptf=fopen("Profile_data.dtb","r");
-//    struct profile pro[max_ammount];
-//    while(fscanf(ptf,"%s",pro[profile_ammount].account)!=EOF)
-//        fscanf(ptf,"%s",pro[profile_ammount++].password);
-//    int choice;
-//    printf(" |--- Welcome To The System ---| \n");
-//    pritnf(" |--- (1)-Login (2)-Register (0)-Exit ---| \n");
-//    pritnf(" |--- Your Selection : ");
-//    scanf("%d",&choice);
-//    if(choice==1)login{
-//        char input_account[max_len];
-//    }
-//    else if(choice==2){
-//    }
-//    else if(choice==0){
-//    }
-//    else{
-//        fclose(ptf);
-//        return;
-//    }
-//};
 void profile_system_Beta()
 {
     while(1)
