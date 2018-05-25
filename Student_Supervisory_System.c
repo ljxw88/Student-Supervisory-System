@@ -5,7 +5,8 @@
 #include <time.h>
 #include <conio.h>
 #define max_len 50
-#define max_ammount 1024000
+#define max_ammount 1024
+#define structsize 10240000
 #pragma comment(linker,"/STACK:1024000000,1024000000")
 //#define max_temp 1000
 float average_grade=0;
@@ -20,7 +21,7 @@ struct student
     float math,eng,chinese,phy,chemic;
     float sum;
     float aver;
-}stu[max_ammount];
+}stu[structsize];
 struct profile
 {
     char account[max_len];
