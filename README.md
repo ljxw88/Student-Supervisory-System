@@ -1,3 +1,2 @@
-# Student_Supervisory_System
-
-Project of supervisory system, based on c-lang, a simple command line tool.
+# Student Supervisory System
+A toy supervisory system done when I was a college freshman ;-) based on C, a simple command line tool.
